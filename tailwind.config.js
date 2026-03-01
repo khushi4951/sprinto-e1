@@ -5,6 +5,17 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    // Background colors
+    { pattern: /^bg-\[#[\dA-Fa-f]{6}\]$/ },
+    // Border colors
+    { pattern: /^border-\[#[\dA-Fa-f]{6}\]$/ },
+    // Text colors
+    { pattern: /^text-\[#[\dA-Fa-f]{6}\]$/ },
+    // Opacity modifiers
+    { pattern: /^opacity-\d+$/ },
+    { pattern: /^(bg|border|text)-(brand|surface|green)-\d+$/ },
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -62,4 +73,4 @@ module.exports = {
     },
   },
   plugins: [],
-}; 
+};
