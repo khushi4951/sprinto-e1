@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(cuid())
+  clerkId    String   @unique
+  email      String   @unique
+  name       String
+  imageUrl   String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  ownedProjects    Project[]       @relation("ProjectOwner")
+  memberships      ProjectMember[]
+  assignedIssues   Issue[]         @relation("IssueAssignee")
+  reportedIssues   Issue[]         @relation("IssueReporter")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  key         String
+  description String?
+  color       String   @default("#818cf8")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  ownerId  String
+  owner    User   @relation("ProjectOwner", fields: [ownerId], references: [id])
+
+  members  ProjectMember[]
+  sprints  Sprint[]
+  issues   Issue[]
+
+  @@unique([key])
+}
+
+model ProjectMember {
+  id        String   @id @default(cuid())
+  role      String   @default("MEMBER")
+  createdAt DateTime @default(now())
+
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  userId  String
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, userId])
+}
+
+model Sprint {
+  id        String   @id @default(cuid())
+  name      String
+  goal      String?
+  status    String   @default("PLANNED") // PLANNED | ACTIVE | COMPLETED
+  startDate DateTime?
+  endDate   DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  issues Issue[]
+}
+
+model Issue {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  type        String   @default("TASK") // TASK | STORY | BUG | EPIC
+  status      String   @default("TODO") // TODO | IN_PROGRESS | IN_REVIEW | DONE
+  priority    String   @default("MEDIUM") // LOW | MEDIUM | HIGH | URGENT
+  order       Int      @default(0)
+  labels      String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  sprintId String?
+  sprint   Sprint? @relation(fields: [sprintId], references: [id], onDelete: SetNull)
+
+  assigneeId String?
+  assignee   User?   @relation("IssueAssignee", fields: [assigneeId], references: [id])
+
+  reporterId String
+  reporter   User   @relation("IssueReporter", fields: [reporterId], references: [id])
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "id": "spr_a58ad654-b5d3-4874-b568-6448a550caf3",
+    "name": "Sprint 1",
+    "goal": "Demo",
+    "status": "active",
+    "startDate": "2026-03-11",
+    "endDate": "2026-03-18",
+    "createdAt": "2026-03-11T06:14:39.188Z",
+    "startedAt": "2026-03-11T06:14:39.199Z",
+    "completedAt": null
+  }
+]

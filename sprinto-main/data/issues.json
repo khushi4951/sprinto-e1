@@ -1,0 +1,12 @@
+[
+  {
+    "id": "iss_2d2cfc60-80c5-4a1f-8dcf-093afcffb297",
+    "title": "First issue",
+    "description": "Test",
+    "sprintId": "spr_a58ad654-b5d3-4874-b568-6448a550caf3",
+    "status": "in_progress",
+    "assigneeId": null,
+    "createdAt": "2026-03-11T06:14:39.206Z",
+    "updatedAt": "2026-03-11T06:50:35.963Z"
+  }
+]

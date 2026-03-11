@@ -1,0 +1,30 @@
+[
+  {
+    "id": "usr_2df02c6b-5cc4-4bd2-a406-c0fdbed5ec41",
+    "email": "test@example.com",
+    "name": "Test",
+    "passwordHash": "$2b$10$u8VHcDSqN7.Uxzw2u6QGp.2hgnbxTRu9T046US/9mETU2qkJzia1i",
+    "createdAt": "2026-03-11T06:14:15.027Z"
+  },
+  {
+    "id": "usr_239ca7cc-bc3a-4e1f-bf8d-182e8af38ca6",
+    "email": "uitest@example.com",
+    "name": "UI Test",
+    "passwordHash": "$2b$10$3gsbCauGIanxODz/wIOwX.0kg6m.AsIS4ufONOY6Cq50n0szcZlq.",
+    "createdAt": "2026-03-11T06:26:08.692Z"
+  },
+  {
+    "id": "usr_8f0cf09b-043c-4414-a49f-45e885265ca4",
+    "email": "sanvie25@gmail.com",
+    "name": "sanvie",
+    "passwordHash": "$2b$10$93FqBieMFYpxVIQ5B8.A3OMDYRNV5Y4eHNzfggMMFF8VFlwxW9Fxe",
+    "createdAt": "2026-03-11T06:36:47.917Z"
+  },
+  {
+    "id": "usr_28f6edf7-2843-4a8b-b787-bc9d4c35e5d5",
+    "email": "sanvie5@gmail.com",
+    "name": "sanvie",
+    "passwordHash": "$2b$10$hnjWVcsIx6qFewU.Ef.TcukDrhbhXQcGuzbKGWnx.cgsa3sxWR9jG",
+    "createdAt": "2026-03-11T06:49:33.681Z"
+  }
+]
