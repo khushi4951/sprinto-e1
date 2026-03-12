@@ -1,4 +1,4 @@
-import { SignIn } from "@clerk/nextjs";
+
 import Link from "next/link";
 import { Zap } from "lucide-react";
 
@@ -40,55 +40,51 @@ export default function SignInPage() {
         </div>
 
         {/* Clerk Sign In */}
-        <SignIn
-          appearance={{
-            elements: {
-              rootBox: "w-full",
+        <div className="backdrop-blur-xl bg-[#0a0d14]/80 border border-[#1e2433] shadow-2xl rounded-2xl p-6">
 
-              card:
-                "backdrop-blur-xl bg-[#0a0d14]/80 border border-[#1e2433] shadow-2xl rounded-2xl p-6",
+  <form className="space-y-5">
 
-              headerTitle:
-                "text-white font-bold text-lg",
+    <div>
+      <label className="block text-surface-200 text-sm mb-1">
+        Email
+      </label>
 
-              headerSubtitle:
-                "text-surface-400 text-sm",
+      <input
+        type="email"
+        placeholder="you@company.com"
+        className="w-full bg-[#0a0d14] border border-[#1e2433] text-white px-3 py-2 rounded-lg focus:border-brand-500/50 focus:ring-2 focus:ring-brand-500/20 outline-none"
+      />
+    </div>
 
-              formButtonPrimary:
-                "bg-gradient-to-r from-brand-500 to-violet-500 hover:opacity-90 transition-all shadow-lg shadow-brand-500/25",
+    <div>
+      <label className="block text-surface-200 text-sm mb-1">
+        Password
+      </label>
 
-              formFieldInput:
-                "bg-[#0a0d14] border-[#1e2433] text-white focus:border-brand-500/50 focus:ring-2 focus:ring-brand-500/20 rounded-lg",
+      <input
+        type="password"
+        placeholder="••••••••"
+        className="w-full bg-[#0a0d14] border border-[#1e2433] text-white px-3 py-2 rounded-lg focus:border-brand-500/50 focus:ring-2 focus:ring-brand-500/20 outline-none"
+      />
+    </div>
 
-              formFieldLabel:
-                "text-surface-200 text-sm",
+    <button
+      type="submit"
+      className="w-full bg-gradient-to-r from-brand-500 to-violet-500 hover:opacity-90 transition-all shadow-lg shadow-brand-500/25 py-2 rounded-lg text-white font-medium"
+    >
+      Sign In
+    </button>
 
-              footerActionLink:
-                "text-brand-400 hover:text-brand-300",
+  </form>
 
-              dividerLine:
-                "bg-[#1e2433]",
+  <p className="text-center text-sm text-surface-400 mt-4">
+    Don’t have an account?{" "}
+    <Link href="/sign-up" className="text-brand-400 hover:text-brand-300">
+      Create account
+    </Link>
+  </p>
 
-              dividerText:
-                "text-surface-500 text-xs",
-
-              socialButtonsBlockButton:
-                "border-[#1e2433] bg-[#0a0d14] text-white hover:bg-[#111827] transition rounded-lg",
-
-              socialButtonsBlockButtonText:
-                "text-white",
-
-              identityPreviewText:
-                "text-surface-200",
-
-              formResendCodeLink:
-                "text-brand-400",
-
-              alertText:
-                "text-red-400",
-            },
-          }}
-        />
+</div>
       </div>
     </div>
   );

@@ -44,9 +44,42 @@ export function signInView() {
       </div>
 
       <div class="auth__side">
-        <div class="card">
-          <h3 class="card__title">Sprint Management</h3>
-          <div class="muted">Create → start → complete sprints, move issues on a Kanban board, and keep a structured backlog.</div>
+        <div class="auth-hero">
+          <div class="auth-hero__badge">
+            <span class="auth-hero__spark">⚡</span>
+            <span>The modern Jira alternative</span>
+            <span class="auth-hero__arrow">→</span>
+          </div>
+
+          <h2 class="auth-hero__title">Ship sprints faster</h2>
+
+          <p class="auth-hero__subtitle">
+            Sprinto brings sprint planning, kanban boards, and backlog management into one beautifully crafted workspace.
+          </p>
+
+          <div class="auth-hero__actions">
+            <a class="btn btn--primary auth-hero__cta" href="#/signup">Start for free <span aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost auth-hero__cta2" href="#/dashboard">See how it works</a>
+          </div>
+
+          <div class="auth-hero__stats" aria-label="Product stats">
+            <div class="auth-stat">
+              <div class="auth-stat__value">10k+</div>
+              <div class="auth-stat__label">active teams</div>
+            </div>
+            <div class="auth-stat">
+              <div class="auth-stat__value">2M+</div>
+              <div class="auth-stat__label">issues tracked</div>
+            </div>
+            <div class="auth-stat">
+              <div class="auth-stat__value">99.9%</div>
+              <div class="auth-stat__label">uptime SLA</div>
+            </div>
+            <div class="auth-stat">
+              <div class="auth-stat__value">&lt;200ms</div>
+              <div class="auth-stat__label">avg response</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -90,9 +123,42 @@ export function signUpView() {
       </div>
 
       <div class="auth__side">
-        <div class="card">
-          <h3 class="card__title">Professional UI</h3>
-          <div class="muted">A modern dark theme with glass effects, rounded components, and smooth interactions inspired by Jira/Linear.</div>
+        <div class="auth-hero">
+          <div class="auth-hero__badge">
+            <span class="auth-hero__spark">⚡</span>
+            <span>Built for speed and focus</span>
+            <span class="auth-hero__arrow">→</span>
+          </div>
+
+          <h2 class="auth-hero__title">Create your workspace</h2>
+
+          <p class="auth-hero__subtitle">
+            Invite your team, plan sprints, and move issues across your board—without the clutter.
+          </p>
+
+          <div class="auth-hero__actions">
+            <a class="btn btn--primary auth-hero__cta" href="#/signup">Start for free <span aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost auth-hero__cta2" href="#/login">Sign in instead</a>
+          </div>
+
+          <div class="auth-hero__stats" aria-label="Product highlights">
+            <div class="auth-stat">
+              <div class="auth-stat__value">Boards</div>
+              <div class="auth-stat__label">kanban-ready</div>
+            </div>
+            <div class="auth-stat">
+              <div class="auth-stat__value">Backlog</div>
+              <div class="auth-stat__label">triage fast</div>
+            </div>
+            <div class="auth-stat">
+              <div class="auth-stat__value">Sprints</div>
+              <div class="auth-stat__label">plan & ship</div>
+            </div>
+            <div class="auth-stat">
+              <div class="auth-stat__value">Team</div>
+              <div class="auth-stat__label">invite anyone</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
