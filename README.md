@@ -1,148 +1,83 @@
-# 🚀 Sprinto — Modern Project Management
+# 🚀 Sprinto — Modern Project Management (Express + Vanilla JS)
+The platform helps development teams organize their work using sprints, task boards, and backlog management.
 
-A beautiful, full-stack Jira alternative built with Next.js, Prisma, Clerk, and Neon PostgreSQL.
-
-![Sprinto Banner](public/banner.png)
-
-## ✨ Features
-
-- 🎨 **Beautiful dark UI** with smooth animations and a polished design system
-- 📋 **Kanban Board** with drag-and-drop issue management
-- 🏃 **Sprint Management** — plan, start, and complete sprints
-- 📝 **Backlog View** — grouped by sprint with collapsible sections
-- 👥 **Team Management** — members, roles, and assignments
-- 🔐 **Auth with Clerk** — Google, GitHub, and email sign-in
-- 🗄️ **Neon PostgreSQL** + Prisma ORM
-- ⚡ **Zustand** state management
-- 📱 **Fully responsive** — works on mobile, tablet, and desktop
-
-## 🛠️ Tech Stack
-
-| Layer        | Tech                              |
-|--------------|-----------------------------------|
-| Framework    | Next.js 14 (App Router)           |
-| Styling      | Tailwind CSS                      |
-| Auth         | Clerk                             |
-| Database     | Neon PostgreSQL                   |
-| ORM          | Prisma                            |
-| State        | Zustand                           |
-| Icons        | Lucide React                      |
-| Animations   | Tailwind CSS Animate              |
-
-## 🚀 Getting Started
-
-### 1. Clone the repo
-```bash
-git clone https://github.com/yourusername/sprinto.git
-cd sprinto
-```
-
-### 2. Install dependencies
-```bash
-npm install
-```
-
-### 3. Set up environment variables
-```bash
-cp .env.example .env
-```
-
-Fill in your `.env`:
-```env
-DATABASE_URL="your_neon_postgresql_url"
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxxxx
-CLERK_SECRET_KEY=sk_test_xxxxx
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
-```
-
-### 4. Set up the database
-```bash
-npm run db:push    # Push schema to Neon
-npm run db:studio  # Explore data with Prisma Studio
-```
-
-### 5. Run the dev server
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) — you're live! 🎉
-
-## 📁 Project Structure
-
-```
-sprinto/
-├── app/
-│   ├── page.jsx                    # Landing page
-│   ├── layout.jsx                  # Root layout (ClerkProvider)
-│   ├── globals.css                 # Global styles
-│   ├── auth/
-│   │   ├── sign-in/page.jsx        # Clerk sign-in
-│   │   └── sign-up/page.jsx        # Clerk sign-up
-│   ├── dashboard/
-│   │   └── page.jsx                # Main dashboard
-│   ├── project/[id]/
-│   │   ├── layout.jsx              # Project layout w/ tabs
-│   │   ├── board/page.jsx          # Kanban board
-│   │   ├── backlog/page.jsx        # Backlog view
-│   │   └── settings/page.jsx       # Project settings
-│   └── members/
-│       └── page.jsx                # Team members
-├── components/
-│   ├── landing/                    # Landing page sections
-│   │   ├── Navbar.jsx
-│   │   ├── Hero.jsx
-│   │   ├── Features.jsx
-│   │   ├── Topics.jsx              # Evaluation topics
-│   │   ├── Testimonials.jsx
-│   │   ├── CTA.jsx
-│   │   └── Footer.jsx
-│   ├── layout/                     # App shell
-│   │   ├── Sidebar.jsx
-│   │   ├── Header.jsx
-│   │   └── ProjectTabs.jsx
-│   ├── board/                      # Core app views
-│   │   ├── BoardView.jsx
-│   │   ├── KanbanCard.jsx
-│   │   ├── KanbanColumn.jsx
-│   │   ├── BacklogView.jsx
-│   │   ├── SettingsView.jsx
-│   │   └── DashboardClient.jsx
-│   ├── modals/
-│   │   ├── IssueModal.jsx
-│   │   └── CreateIssueModal.jsx
-│   └── ui/                         # Reusable primitives
-│       ├── Avatar.jsx
-│       ├── Badge.jsx
-│       └── Button.jsx
-├── hooks/
-│   └── useStore.js                 # Zustand store
+Backend: Node.js + Express (REST JSON APIs)
+Frontend: Single Page Application (HTML/CSS/vanilla JS) served by Express from /public
+Storage: JSON files under /data using Node’s fs module
+Features
+Authentication
+Sign up / Login
+Session stored server-side in data/sessions.json and referenced by an HttpOnly cookie
+Sprint Management
+Create sprint
+Start sprint (only one active at a time)
+Complete sprint (moves unfinished issues back to backlog)
+View active sprint
+Kanban Board
+Drag & drop issues across columns
+Columns: Todo, In Progress, Done
+Backlog View
+Issues grouped by sprint
+Collapsible sections
+Team Management
+Add members
+Assign roles
+Assign issues (via issue editor)
+UI
+Dark modern UI, responsive, smooth animations, sidebar nav, SPA routing
+Project structure
+sprinto-main/
+├── server.js
+├── routes/
+├── controllers/
+├── middleware/
 ├── data/
-│   └── seed.js                     # Demo seed data
-├── lib/
-│   ├── prisma.js                   # Prisma client
-│   └── utils.js                    # Shared utilities + constants
-├── prisma/
-│   └── schema.prisma               # Database schema
-└── middleware.js                   # Clerk auth middleware
-```
+│   ├── users.json
+│   ├── sessions.json
+│   ├── sprints.json
+│   ├── issues.json
+│   └── team.json
+└── public/
+    ├── index.html
+    ├── styles.css
+    └── app.js
+Run locally
+cd sprinto-main
+npm install
+npm run dev
+Open http://localhost:3000.
 
-## 🎓 Backend Topics Covered
+API overview (all JSON)
+POST /api/auth/signup
 
-This project aligns with the following curriculum topics:
+POST /api/auth/login
 
-1. **Client-Server Architecture** — Next.js API routes as the server layer
-2. **Node.js Environment** — npm scripts, file modules, dependencies
-3. **Node.js Advantages** — Non-blocking I/O, single-threaded event loop
-4. **HTTP & Modules** — REST API endpoints, NPM modules
-5. **Express Equivalent** — Next.js App Router as the framework layer
-6. **Routing** — Dynamic routes, route parameters (`[id]`), route handlers
-7. **Middleware** — Clerk middleware, auth checks, request lifecycle
-8. **Body Parser** — JSON request handling in API routes
+POST /api/auth/logout
 
-## 📝 License
+GET /api/auth/me
 
-MIT © 2025 Sprinto
+GET /api/sprints
+
+POST /api/sprints
+
+GET /api/sprints/active
+
+POST /api/sprints/:id/start
+
+POST /api/sprints/:id/complete
+
+GET /api/issues (optional query: ?sprintId=...)
+
+POST /api/issues
+
+PATCH /api/issues/:id
+
+POST /api/issues/:id/move
+
+DELETE /api/issues/:id
+
+GET /api/team
+
+POST /api/team
+
+PATCH /api/team/:id
